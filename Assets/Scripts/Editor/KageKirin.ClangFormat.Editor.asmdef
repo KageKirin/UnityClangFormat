@@ -1,0 +1,8 @@
+{
+    "name": "KageKirin.ClangFormat.Editor",
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "references": []
+}
