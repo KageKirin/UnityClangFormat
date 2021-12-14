@@ -1,6 +1,6 @@
 {
     "name": "com.kagekirin.clang-format",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "displayName": "Clang Format",
     "description": "Editor extension to run clang format before recompiling C# source files",
     "unity": "2020.1^",
