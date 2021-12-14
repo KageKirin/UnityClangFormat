@@ -22,8 +22,8 @@ jobs:
           git config --local user.email "kagekirin+ci@gmail.com"
           git config --local user.name "CI Bot"
 
-      - name: Install git-cliff
-        run: cargo install git-cliff
+      - name: Install generate-changelog
+        run: npm i -g generate-changelog
 
       - name: Get latest git tag
         id: latesttag
@@ -60,8 +60,7 @@ jobs:
 
       - name: Update changelog
         run: |
-          git cliff --init
-          git cliff -v --output CHANGELOG.md
+          changelog CHANGELOG.md
           cat CHANGELOG.md
           git add CHANGELOG.md
           git commit -m "chore(tag): update changelog for version to ${{ steps.updated_version.outputs.version }}"
