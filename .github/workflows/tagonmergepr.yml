@@ -61,7 +61,7 @@ jobs:
       - name: Update changelog
         run: |
           git cliff --init
-          git cliff . > CHANGELOG.md
+          git cliff > CHANGELOG.md
           cat CHANGELOG.md
 
       - name: Commit new version
