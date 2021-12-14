@@ -1,2 +1,5 @@
 ## .gitignore for com.kagekirin.clang-format
 
+## artifacts from running npm pack
+*.tar.gz
+*.tgz
