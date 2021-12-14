@@ -61,11 +61,8 @@ jobs:
       - name: Update changelog
         run: |
           git cliff --init
-          git cliff > CHANGELOG.md
+          git cliff -v --output CHANGELOG.md
           cat CHANGELOG.md
-
-      - name: Commit new version
-        run: |
           git add CHANGELOG.md
           git commit -m "chore(tag): update changelog for version to ${{ steps.updated_version.outputs.version }}"
 
