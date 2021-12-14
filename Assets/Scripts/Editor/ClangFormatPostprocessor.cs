@@ -18,7 +18,8 @@ namespace kagekirin.clangformat
 
         void OnPreprocessAsset()
         {
-            ClangFormatSettings clangFormatSettings      = ClangFormatSettings.GetOrCreateSettings();
+            ClangFormatSettings clangFormatSettings           = ClangFormatSettings.GetOrCreateSettings();
+            ClangFormatStyleSettings clangFormatStyleSettings = ClangFormatStyleSettings.GetOrCreateSettings();
 
             if (assetPath.EndsWith(".cs"))
             {
@@ -31,7 +32,10 @@ namespace kagekirin.clangformat
                     {
                         process.StartInfo.UseShellExecute        = true;
                         process.StartInfo.FileName               = clangFormatSettings.m_InstallPath;
-                        process.StartInfo.Arguments              = @"-i " + fullPath;
+                        process.StartInfo.Arguments              = @"-i ";
+                        process.StartInfo.Arguments              += $"--style=\"{clangFormatStyleSettings.m_Style}\" ";
+                        process.StartInfo.Arguments              += $"--fallback-style=\"{clangFormatStyleSettings.m_FallbackStyle}\" ";
+                        process.StartInfo.Arguments              += fullPath;
                         process.StartInfo.CreateNoWindow         = true;
                         process.StartInfo.RedirectStandardOutput = false;
 

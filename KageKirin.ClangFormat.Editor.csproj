@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>0.0.1</Version>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,6 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Editor\ClangFormatPostprocessor.cs" />
+     <Compile Include="Assets\Scripts\Editor\ClangFormatSettingsProvider.cs" />
+     <Compile Include="Assets\Scripts\Editor\ClangFormatSettings.cs" />
+     <Compile Include="Assets\Scripts\Editor\ClangFormatStyleSettings.cs" />
      <None Include="Assets\Scripts\Editor\KageKirin.ClangFormat.Editor.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.16f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
