@@ -18,6 +18,9 @@ namespace kagekirin.clangformat
 
         void OnPreprocessAsset()
         {
+            ClangFormatSettings clangFormatSettings           = ClangFormatSettings.GetOrCreateSettings();
+            ClangFormatStyleSettings clangFormatStyleSettings = ClangFormatStyleSettings.GetOrCreateSettings();
+
             if (assetPath.EndsWith(".cs"))
             {
                 var fullPath = Path.Combine(RootPath, assetPath);
@@ -27,15 +30,12 @@ namespace kagekirin.clangformat
                 {
                     using (var process = new System.Diagnostics.Process())
                     {
-                        process.StartInfo.UseShellExecute = true;
-#if UNITY_EDITOR_WIN
-                        process.StartInfo.FileName = @"clang-format.exe";
-#elif UNITY_EDITOR_OSX
-                        process.StartInfo.FileName = @"/usr/local/bin/clang-format";
-#else // UNITY_EDITOR_LINUX
-                        process.StartInfo.FileName = @"/usr/local/bin/clang-format";
-#endif
-                        process.StartInfo.Arguments              = @"-i " + fullPath;
+                        process.StartInfo.UseShellExecute        = true;
+                        process.StartInfo.FileName               = clangFormatSettings.m_InstallPath;
+                        process.StartInfo.Arguments              = @"-i ";
+                        process.StartInfo.Arguments              += $"--style=\"{clangFormatStyleSettings.m_Style}\" ";
+                        process.StartInfo.Arguments              += $"--fallback-style=\"{clangFormatStyleSettings.m_FallbackStyle}\" ";
+                        process.StartInfo.Arguments              += fullPath;
                         process.StartInfo.CreateNoWindow         = true;
                         process.StartInfo.RedirectStandardOutput = false;
 
